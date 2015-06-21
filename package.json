@@ -1,0 +1,27 @@
+{
+  "name": "fluxo_react_connect_stores",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/samuelsimoes/fluxo-react-connect-stores"
+  },
+  "author": {
+    "name": "Samuel Simões",
+    "email": "slip.cm@gmail.com"
+  },
+  "devDependencies": {
+    "chai": "*",
+    "grunt": "*",
+    "grunt-cli": "*",
+    "grunt-contrib-clean": "*",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-uglify": "*",
+    "grunt-mocha": "*",
+    "grunt-settings": "*",
+    "mocha": "*",
+    "bower": "*"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/grunt test"
+  }
+}

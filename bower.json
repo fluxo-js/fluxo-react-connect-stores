@@ -1,0 +1,30 @@
+{
+  "name": "fluxo_react_connect_stores",
+  "version": "0.0.1",
+  "homepage": "https://github.com/samuelsimoes/fluxo-react-connect-stores",
+  "authors": [
+    "Samuel Simões <slip.cm@gmail.com>"
+  ],
+  "keywords": [
+    "fluxo",
+    "react",
+    "store",
+    "flux",
+    "facebook"
+  ],
+  "dependencies": {
+    "fluxo": "*",
+    "react": "*"
+  },
+  "main": "dist/fluxo_react_connect_stores.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "spec",
+    "src",
+    "Gruntfile.js",
+    "package.json",
+    "README.md"
+  ]
+}
