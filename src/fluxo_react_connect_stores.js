@@ -55,7 +55,7 @@
       },
 
       listenStore: function(store) {
-        var canceler = store.on(["change"], this.updateComponentState.bind(this));
+        var canceler = store.on(["change"], this.updateComponentState);
         this.storesOnChangeCancelers.push(canceler);
       },
 
