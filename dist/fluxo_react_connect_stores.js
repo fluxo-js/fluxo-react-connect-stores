@@ -1,4 +1,4 @@
-/*! fluxo_react_connect_stores v0.0.1 | (c) 2015 Samuel Simões |  */
+/*! fluxo_react_connect_stores v0.0.2 | (c) 2015 Samuel Simões |  */
 (function(root, factory) {
   if (typeof define === "function" && define.amd) {
     define(["react", "fluxo"], factory);
@@ -56,7 +56,7 @@
       },
 
       listenStore: function(store) {
-        var canceler = store.on(["change"], this.updateComponentState.bind(this));
+        var canceler = store.on(["change"], this.updateComponentState);
         this.storesOnChangeCancelers.push(canceler);
       },
 
