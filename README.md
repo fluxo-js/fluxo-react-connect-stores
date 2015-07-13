@@ -6,7 +6,7 @@ component.
 ###Installation
 Install with bower and include on your page or use some module loader.
 ```
-$ bower install --save-dev fluxo_react_connect_stores
+$ bower install --save fluxo_react_connect_stores
 ```
 
 ##How to use
