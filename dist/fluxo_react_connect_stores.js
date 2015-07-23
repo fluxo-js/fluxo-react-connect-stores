@@ -30,10 +30,6 @@
       storesOnChangeCancelers: [],
 
       getInitialState: function() {
-        return this.storesState();
-      },
-
-      storesState: function() {
         var state = {};
 
         for (var storeName in stores) {
@@ -44,24 +40,31 @@
         return state;
       },
 
-      updateComponentState: function() {
-        this.setState(this.storesState);
+      updateStateByStore: function(storeName, store) {
+        var state = {};
+        state[storeName] = store.toJSON();
+        this.setState(state);
       },
 
       componentWillMount: function() {
         for (var storeName in stores) {
           var store = stores[storeName];
-          this.listenStore(store);
+          this.listenStore(storeName, store);
         }
       },
 
-      listenStore: function(store) {
-        var canceler = store.on(["change", "stores:change"], this.updateComponentState);
+      listenStore: function(storeName, store) {
+        var canceler =
+          store.on(
+            ["change", "stores:change"],
+            this.updateStateByStore.bind(null, storeName)
+          );
+
         this.storesOnChangeCancelers.push(canceler);
       },
 
       componentWillUnmount: function() {
-        for (var i = 0, l = this.storesOnChangeCancelers.length; i < l; i ++) {
+        for (var i = 0, l = this.storesOnChangeCancelers.length; i < l; i++) {
           this.storesOnChangeCancelers[i].call();
         }
       },
