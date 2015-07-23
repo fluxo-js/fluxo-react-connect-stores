@@ -13,7 +13,7 @@
     "facebook"
   ],
   "dependencies": {
-    "fluxo": "*",
+    "fluxo": ">=0.0.14",
     "react": "*"
   },
   "main": "dist/fluxo_react_connect_stores.js",
