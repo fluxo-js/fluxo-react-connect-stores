@@ -30,6 +30,8 @@
 
       storesOnChangeCancelers: [],
 
+      renderRequestQueue: [],
+
       getInitialState: function() {
         var state = {};
 
@@ -41,10 +43,32 @@
         return state;
       },
 
-      updateStateByStore: function(storeName, store) {
+      renderRequestQueuedStores: function() {
         var state = {};
-        state[storeName] = store.toJSON();
+
+        for (var i = 0, l = this.renderRequestQueue.length; i < l; i++) {
+          var storeName = this.renderRequestQueue[i];
+          state[storeName] = stores[storeName].toJSON();
+        }
+
         this.setState(state);
+
+        this.renderRequestQueue = [];
+      },
+
+      queueRenderRequest: function(storeName) {
+        if (this.renderRequestQueue.indexOf(storeName) === -1) {
+          this.renderRequestQueue.push(storeName);
+        }
+
+        if (!this.consumeQueueNextTick) {
+          this.consumeQueueNextTick = setTimeout(this.consumeQueue, 0);
+        }
+      },
+
+      consumeQueue: function() {
+        this.renderRequestQueuedStores();
+        delete this.consumeQueueNextTick;
       },
 
       componentWillMount: function() {
@@ -58,7 +82,7 @@
         var canceler =
           store.on(
             ["change", "stores:change"],
-            this.updateStateByStore.bind(null, storeName)
+            this.queueRenderRequest.bind(null, storeName)
           );
 
         this.storesOnChangeCancelers.push(canceler);
