@@ -16,10 +16,12 @@ describe("FluxoReactConnectStores", function () {
 
     var result = shallowRenderer.getRenderOutput();
 
-    expect(result.props.person).to.be.eql({ name: "Samuel" });
+    expect(result.props.person.name).to.be.eql("Samuel");
 
     person.setAttribute("name", "Samuel Simões");
 
-    expect(result.props.person).to.be.eql({ name: "Samuel Simões" });
+    result = shallowRenderer.getRenderOutput();
+
+    expect(result.props.person.name).to.be.eql("Samuel Simões");
   });
 });
