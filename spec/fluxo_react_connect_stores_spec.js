@@ -3,12 +3,16 @@ describe("FluxoReactConnectStores", function () {
     var person = new Fluxo.Store({ name: "Samuel" });
 
     var Component = React.createClass({
+      displayName: "Component",
+
       render: function() {
         return React.createElement("p", null, this.props.person.name);
       }
     });
 
     Component = FluxoReactConnectStores(Component, { person: person });
+
+    expect(Component.displayName).to.be.eql("FluxoReactConnectStores(Component)");
 
     var shallowRenderer = React.addons.TestUtils.createRenderer();
 

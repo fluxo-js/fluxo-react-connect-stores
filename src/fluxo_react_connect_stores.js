@@ -26,6 +26,8 @@
   return function (Component, stores) {
     /** @lends Fluxo.ConnectStores */
     return React.createClass({
+      displayName: "FluxoReactConnectStores(" + Component.displayName + ")",
+
       storesOnChangeCancelers: [],
 
       getInitialState: function() {
