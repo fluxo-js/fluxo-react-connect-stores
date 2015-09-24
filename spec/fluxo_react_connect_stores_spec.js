@@ -1,5 +1,5 @@
 describe("FluxoReactConnectStores", function () {
-  it("reacts on Fluxo store", function() {
+  it("reacts on Fluxo store", function(done) {
     var person = new Fluxo.Store({ name: "Samuel" });
 
     var Component = React.createClass({
@@ -24,8 +24,12 @@ describe("FluxoReactConnectStores", function () {
 
     person.setAttribute("name", "Samuel Simões");
 
-    result = shallowRenderer.getRenderOutput();
+    setTimeout(function () {
+      result = shallowRenderer.getRenderOutput();
 
-    expect(result.props.person.name).to.be.eql("Samuel Simões");
+      expect(result.props.person.name).to.be.eql("Samuel Simões");
+
+      done();
+    }, 0);
   });
 });
