@@ -1,9 +1,9 @@
 (function(root, factory) {
   if (typeof define === "function" && define.amd) {
-    define(["react", "fluxo"], factory);
+    define(["react", "fluxo-js"], factory);
   } else if (typeof exports !== "undefined") {
     var React = require("react"),
-        Fluxo = require("fluxo");
+        Fluxo = require("fluxo-js");
     return module.exports = factory(React, Fluxo);
   } else {
     root.FluxoReactConnectStores = factory(root.React, root.Fluxo);

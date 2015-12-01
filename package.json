@@ -1,13 +1,19 @@
 {
-  "name": "fluxo_react_connect_stores",
+  "name": "fluxo-react-connect-stores",
   "version": "0.0.3",
+  "description": "Utility to connect your Fluxo stores on your React.js component",
+  "main": "dist/fluxo.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/samuelsimoes/fluxo-react-connect-stores"
+    "url": "https://github.com/fluxo-js/fluxo-react-connect-stores"
   },
   "author": {
     "name": "Samuel Simões",
-    "email": "slip.cm@gmail.com"
+    "email": "samuel@samuelsimoes.com"
+  },
+  "dependencies": {
+    "fluxo-js": ">=0.0.14",
+    "react": "*"
   },
   "devDependencies": {
     "chai": "*",
