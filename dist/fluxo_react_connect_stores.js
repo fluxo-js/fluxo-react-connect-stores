@@ -1,4 +1,4 @@
-/*! fluxo-react-connect-stores v0.0.3 | (c) 2015 Samuel Simões |  */
+/*! fluxo-react-connect-stores v0.0.4 | (c) 2015 Samuel Simões |  */
 (function(root, factory) {
   if (typeof define === "function" && define.amd) {
     define(["react", "fluxo-js"], factory);
