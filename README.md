@@ -14,6 +14,16 @@ or
 $ npm install --save fluxo-react-connect-stores
 ```
 
+####Using with CommonJS module loaders (Webpack/Browserify)
+```js
+var Connector = require("fluxo-react-connect-stores");
+Connector(MyComponent, { comments: commentsStore });
+```
+
+####Using with \<script\> tag
+If you include the connector with script tag the connector will be available through
+`window.FluxoReactConnectStores`.
+
 ##How to use
 The FluxoReactConnectStores returns a "wrapper component" around your component that
 listen the stores. When a store change, this component define new props to your
@@ -22,10 +32,12 @@ component, causing the component update.
 You need specify what stores you are "connecting" on your component like this:
 
 ```js
+var Connector = require("fluxo-react-connect-stores");
+
 var commentStore = new Fluxo.Store();
 
 var MyComponentConnected =
-  FluxoReactConnectStores(MyComponent, { comment: commentStore });
+  Connector(MyComponent, { comment: commentStore });
 ```
 
 The first argument are the component that you will connect and the second one is a
@@ -35,6 +47,8 @@ All connected store data will be placed on the component's props. Take a look on
 example below.
 
 ```jsx
+var Connector = require("fluxo-react-connect-stores");
+
 // A new instance of Fluxo.Store
 var comment = new Fluxo.Store({ content: "My comment" });
 
@@ -47,7 +61,7 @@ var MyComponent = React.createClass({
 });
 
 // Connect my store on my component
-var MyComponentConnected = FluxoReactConnectStores(MyComponent, { comment: comment });
+var MyComponentConnected = Connector(MyComponent, { comment: comment });
 
 // Render my connected component
 React.render(<MyComponentConnected/>, document.getElementById("app"));
