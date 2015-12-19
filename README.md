@@ -4,9 +4,14 @@ FluxoReactConnectStores is a utility to connect your **[Fluxo](https://github.co
 component.
 
 ###Installation
-Install with bower and include on your page or use some module loader.
+Install with bower or npm and include on your app with some module loader
+(browserify/webpack/require.js) or include directly on your app through script tag.
 ```
 $ bower install --save fluxo_react_connect_stores
+```
+or
+```
+$ npm install --save fluxo-react-connect-stores
 ```
 
 ##How to use
