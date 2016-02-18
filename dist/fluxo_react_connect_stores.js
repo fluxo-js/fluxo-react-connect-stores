@@ -1,15 +1,14 @@
-/*! fluxo-react-connect-stores v0.0.5 | (c) 2015 Samuel Simões |  */
+/*! fluxo-react-connect-stores v0.0.5 | (c) 2016 Samuel Simões |  */
 (function(root, factory) {
   if (typeof define === "function" && define.amd) {
-    define(["react", "fluxo-js"], factory);
+    define(["react"], factory);
   } else if (typeof exports !== "undefined") {
-    var React = require("react"),
-        Fluxo = require("fluxo-js");
-    return module.exports = factory(React, Fluxo);
+    var React = require("react");
+    return module.exports = factory(React);
   } else {
-    root.FluxoReactConnectStores = factory(root.React, root.Fluxo);
+    root.FluxoReactConnectStores = factory(root.React);
   }
-})(this, function(React, Fluxo) {
+})(this, function(React) {
   /**
    * FluxoReactConnectStores is a function to connect your Fluxo stores on your
    * React.js component. This method returns a "wrapper component" around to
@@ -96,7 +95,18 @@
       },
 
       render: function() {
-        return React.createElement(Component, Fluxo.extend({}, this.props, this.state));
+        var propsToComponent = {};
+
+        // convert to spread when use ES6
+        for (var prop in this.props) {
+          propsToComponent[prop] = this.props[prop];
+        }
+
+        for (var state in this.state) {
+          propsToComponent[state] = this.state[state];
+        }
+
+        return React.createElement(Component, propsToComponent);
       }
     });
   };

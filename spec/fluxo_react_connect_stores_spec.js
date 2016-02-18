@@ -1,6 +1,6 @@
 describe("FluxoReactConnectStores", function () {
   it("reacts on Fluxo store", function(done) {
-    var person = new Fluxo.Store({ name: "Samuel" });
+    var person = new Fluxo.ObjectStore({ name: "Samuel" });
 
     var Component = React.createClass({
       displayName: "Component",

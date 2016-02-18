@@ -12,10 +12,10 @@
     "email": "samuel@samuelsimoes.com"
   },
   "dependencies": {
-    "fluxo-js": ">=0.0.14",
     "react": "*"
   },
   "devDependencies": {
+    "fluxo-js": ">=0.0.22",
     "chai": "*",
     "grunt": "*",
     "grunt-cli": "*",
