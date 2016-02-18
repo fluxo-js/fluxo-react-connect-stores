@@ -32,4 +32,14 @@ describe("FluxoReactConnectStores", function () {
       done();
     }, 0);
   });
+
+  it("throws an error when receive an falsy value", function() {
+    var Component = React.createClass({
+      render: function() { return React.createElement("p", null, "Hello"); }
+    });
+
+    expect(function () {
+      FluxoReactConnectStores(Component, { person: null });
+    }).to.throw(Error, "The store \"person\" that you are trying to connect on React component is a falsy value.");
+  });
 });

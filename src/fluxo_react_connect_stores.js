@@ -23,6 +23,12 @@
    * @returns {function} Wrapped component constructor function.
    */
   return function (Component, stores) {
+    for (var store in stores) {
+      if (!stores[store]) {
+        throw new Error(("The store \"" + store + "\" that you are trying to connect on React component is a falsy value."));
+      }
+    }
+
     /** @lends Fluxo.ConnectStores */
     return React.createClass({
       displayName: "FluxoReactConnectStores(" + Component.displayName + ")",
