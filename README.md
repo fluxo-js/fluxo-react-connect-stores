@@ -26,7 +26,7 @@ If you include the connector with script tag the connector will be available thr
 
 ##How to use
 The FluxoReactConnectStores returns a "wrapper component" around your component that
-listen the stores. When a store change, this component define new props to your
+listens to the stores. When a store change, this component define new props to your
 component, causing the component update.
 
 You need specify what stores you are "connecting" on your component like this:
@@ -34,13 +34,13 @@ You need specify what stores you are "connecting" on your component like this:
 ```js
 var Connector = require("fluxo-react-connect-stores");
 
-var commentStore = new Fluxo.Store();
+var commentStore = new Fluxo.ObjectStore();
 
 var MyComponentConnected =
   Connector(MyComponent, { comment: commentStore });
 ```
 
-The first argument are the component that you will connect and the second one is a
+The first argument is the component that you will connect and the second one is a
 literal object where the key is the store name and the value is the store instance.
 
 All connected store data will be placed on the component's props. Take a look on the
