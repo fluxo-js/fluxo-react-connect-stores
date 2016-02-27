@@ -66,6 +66,8 @@ var MyComponentConnected = Connector(MyComponent, { comment: comment });
 // Render my connected component
 React.render(<MyComponentConnected/>, document.getElementById("app"));
 ```
+###View layer update
+Whenever your Fluxo stores change the view layer will be updated with the new stores state. The `FluxoReactConnectoStores` is smart enough to only call `setState` once per tick, in other words, **no matter who many times you change your store on the tick, only one `setState` will be invoked on view layer** with the resulting stores state.
 
 -----------------------------------------
 
