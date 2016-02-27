@@ -25,7 +25,7 @@ If you include the connector with script tag the connector will be available thr
 `window.FluxoReactConnectStores`.
 
 ##How to use
-The FluxoReactConnectStores returns a "wrapper component" around your component that
+The `FluxoReactConnectStores` returns a "wrapper component" around your component that
 listens to the stores. When a store change, this component define new props to your
 component, causing the component update.
 
@@ -67,7 +67,7 @@ var MyComponentConnected = Connector(MyComponent, { comment: comment });
 React.render(<MyComponentConnected/>, document.getElementById("app"));
 ```
 ###View layer update
-Whenever your Fluxo stores change the view layer will be updated with the new stores state. The `FluxoReactConnectoStores` is smart enough to only call `setState` once per tick, in other words, **no matter who many times you change your store on the tick, only one `setState` will be invoked on view layer** with the resulting stores state.
+Whenever your Fluxo stores change the view layer will be updated with the new stores state. The `FluxoReactConnectStores` is smart enough to only call `setState` once per tick, in other words, **no matter who many times you change your store on the tick, only one `setState` will be invoked on view layer** with the resulting stores state.
 
 -----------------------------------------
 
