@@ -1,6 +1,6 @@
 {
   "name": "fluxo-react-connect-stores",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Utility to connect your Fluxo stores on your React.js component",
   "main": "dist/fluxo_react_connect_stores.js",
   "repository": {
