@@ -35,9 +35,11 @@
 
       storesOnChangeCancelers: [],
 
-      renderRequestQueue: [],
-
       getInitialState: function() {
+        return this.storesState();
+      },
+
+      storesState: function() {
         var state = {};
 
         for (var storeName in stores) {
@@ -46,34 +48,6 @@
         }
 
         return state;
-      },
-
-      renderRequestQueuedStores: function() {
-        var state = {};
-
-        for (var i = 0, l = this.renderRequestQueue.length; i < l; i++) {
-          var storeName = this.renderRequestQueue[i];
-          state[storeName] = stores[storeName].toJSON();
-        }
-
-        this.setState(state);
-
-        this.renderRequestQueue = [];
-      },
-
-      queueRenderRequest: function(storeName) {
-        if (this.renderRequestQueue.indexOf(storeName) === -1) {
-          this.renderRequestQueue.push(storeName);
-        }
-
-        if (!this.consumeQueueNextTick) {
-          this.consumeQueueNextTick = setTimeout(this.consumeQueue, 0);
-        }
-      },
-
-      consumeQueue: function() {
-        this.renderRequestQueuedStores();
-        delete this.consumeQueueNextTick;
       },
 
       componentWillMount: function() {
@@ -85,11 +59,9 @@
 
       listenStore: function(storeName, store) {
         var canceler =
-          store.on(
-            ["change", "stores:change"],
-            this.queueRenderRequest.bind(null, storeName)
-          );
-
+          store.on(["change"], function () {
+            this.setState(this.storesState());
+          }.bind(this));
         this.storesOnChangeCancelers.push(canceler);
       },
 

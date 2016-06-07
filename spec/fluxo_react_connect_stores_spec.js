@@ -1,5 +1,5 @@
 describe("FluxoReactConnectStores", function () {
-  it("reacts on Fluxo store", function(done) {
+  it("reacts on Fluxo store", function() {
     var person = new Fluxo.ObjectStore({ name: "Samuel" });
 
     var Component = React.createClass({
@@ -24,13 +24,9 @@ describe("FluxoReactConnectStores", function () {
 
     person.setAttribute("name", "Samuel Simões");
 
-    setTimeout(function () {
-      result = shallowRenderer.getRenderOutput();
+    result = shallowRenderer.getRenderOutput();
 
-      expect(result.props.person.name).to.be.eql("Samuel Simões");
-
-      done();
-    }, 0);
+    expect(result.props.person.name).to.be.eql("Samuel Simões");
   });
 
   it("throws an error when receive an falsy value", function() {
